@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan({"com.org.prj.resources"})
+@ComponentScan({"com.org.prj.*"})
 public class PrjApplication {
 
 	public static void main(String[] args) {
