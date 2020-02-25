@@ -6,8 +6,8 @@ import com.org.prj.services.external.UserService;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl extends RestTemplate implements UserService {
@@ -25,9 +25,21 @@ public class UserServiceImpl extends RestTemplate implements UserService {
         return getUsersDtosFromUsers(users);
     }
 
-    // TODO
     private List<UserDto> getUsersDtosFromUsers(User[] users) {
-        return new ArrayList<>();
+        List<UserDto> result =
+                Arrays.asList(users).isEmpty() ? new ArrayList<>() :
+                Arrays.stream(users)
+                        .filter(Objects::nonNull)
+
+                        .map(u -> new UserDto(u.getUserId(), u.getId(), u.getTitle(), u.getBody()))
+
+                        .limit(50)
+
+                        .sorted(Comparator.comparing(UserDto::getTitle))
+
+                        .collect(Collectors.toList());
+
+        return result;
     }
 
     private String getUsersListServiceUrl() {
