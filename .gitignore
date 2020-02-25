@@ -1,0 +1,4 @@
+# Ignored file and directories
+.idea
+/back-end/back-end.iml
+/back-end/target
