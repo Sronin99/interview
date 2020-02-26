@@ -3,6 +3,7 @@ package com.org.prj.services.external.Impl;
 import com.org.prj.beans.User;
 import com.org.prj.dto.UserDto;
 import com.org.prj.services.external.UserService;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -12,12 +13,14 @@ import java.util.stream.Collectors;
 @Service
 public class UserServiceImpl extends RestTemplate implements UserService {
 
+    @Value("${service.user}")
+    private String wsUrl;
+
     @Override
     public List<UserDto> getUsersList() {
-        String url = getUsersListServiceUrl();
         User[] users;
         try {
-            users = this.getForObject(url, User[].class);
+            users = this.getForObject(wsUrl, User[].class);
         } catch (Exception e) {
             throw new RuntimeException("Error while calling Users List Service", e);
         }
@@ -40,9 +43,5 @@ public class UserServiceImpl extends RestTemplate implements UserService {
                         .collect(Collectors.toList());
 
         return result;
-    }
-
-    private String getUsersListServiceUrl() {
-        return "https://jsonplaceholder.typicode.com/posts";
     }
 }
