@@ -1,27 +1,23 @@
-# App
+# Installations à faire sur l'environnement de DEV
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.3.
+##### Java JDK jdk1.8.0_241
+##### Maven 3.6.3
+##### Node v12.13.0
+##### Angular CLI 9.0.3
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+# Exécution  
 
-## Code scaffolding
+IntelliJ IDEA pour ma part:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+##### mvn clean install sur le back-end
+##### npm install sur le front-end
+##### Configurer le Run sur L'IDE pour détecter la main class com.org.prj.PrjApplication
+##### Pointer vers la bonne JRE dans la JDK installé : {JDK_PATH}\jre
+##### Configurer le projet et ces modules sur l'installation du Maven 3.6.3 {MAVEN_PATH}
+##### Configurer le fichier setting de l'utilisateur sur le fichier {MAVEN_PATH}\conf\settings.xml du Maven
 
-## Build
+Lancer le Run de l'application pour démarrer Sprint Boot
+lancer le front par un npm start sur la route du module front-end (ou par configuration d'un Run 'npm' sur IntellJ en pointant sur le package.json)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Accéder à l'application sur l'url du front par défaut http://localhost:4200/
